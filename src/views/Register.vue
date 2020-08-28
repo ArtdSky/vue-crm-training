@@ -17,12 +17,12 @@
         <small
           class="helper-text invalid"
           v-if="$v.email.$dirty && !$v.email.required"
-          >Email cant be empty</small
+          >Поле Email не должно быть пустым</small
         >
         <small
           class="helper-text invalid"
-          v-if="$v.email.$dirty && !$v.email.email"
-          >Enter correctly email</small
+          v-else-if="$v.email.$dirty && !$v.email.email"
+          >Введите корретный Email</small
         >
       </div>
       <div class="input-field">
@@ -40,25 +40,30 @@
         <small
           class="helper-text invalid"
           v-if="$v.password.$dirty && !$v.password.required"
-          >Password cant be empty</small
         >
+          Введите пароль
+        </small>
         <small
           class="helper-text invalid"
-          v-if="$v.password.$dirty && !$v.password.minLength"
-          >Enter correctly password
-          {{ $v.password.$params.minLength.min }} length. Right now
-          {{ password.length }}</small
+          v-else-if="$v.password.$dirty && !$v.password.minLength"
         >
+          Пароль должен быть {{ $v.password.$params.minLength.min }} символов.
+          Сейчас он {{ password.length }}
+        </small>
       </div>
       <div class="input-field">
-        <input id="name" type="text" v-model.trim="name" />
+        <input
+          id="name"
+          type="text"
+          v-model.trim="name"
+          :class="{ invalid: $v.name.$dirty && !$v.name.required }"
+        />
         <label for="name">Имя</label>
         <small
           class="helper-text invalid"
           v-if="$v.name.$dirty && !$v.name.required"
-          :class="{ invalid: $v.name.$dirty && !$v.name.required }"
         >
-          Enter your name
+          Введите ваше имя
         </small>
       </div>
       <p>
@@ -85,10 +90,10 @@
 </template>
 
 <script>
-import { email, minLength, required } from "vuelidate/lib/validators";
+import { email, required, minLength } from "vuelidate/lib/validators";
 
 export default {
-  name: "Register",
+  name: "register",
   data: () => ({
     email: "",
     password: "",
@@ -102,7 +107,7 @@ export default {
     agree: { checked: v => v }
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       if (this.$v.$invalid) {
         this.$v.$touch();
         return;
@@ -113,11 +118,13 @@ export default {
         password: this.password,
         name: this.name
       };
-      console.log(formData);
-      this.$router.push("/");
+
+      try {
+        await this.$store.dispatch("register", formData);
+        this.$router.push("/");
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
     }
   }
 };
 </script>
-
-<style scoped></style>

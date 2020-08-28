@@ -13,19 +13,13 @@
 
             <form>
               <div class="input-field">
-                <input
-                    id="name"
-                    type="text"
-                >
+                <input id="name" type="text" />
                 <label for="name">Название</label>
                 <span class="helper-text invalid">Введите название</span>
               </div>
 
               <div class="input-field">
-                <input
-                    id="limit"
-                    type="number"
-                >
+                <input id="limit" type="number" />
                 <label for="limit">Лимит</label>
                 <span class="helper-text invalid">Минимальная величина</span>
               </div>
@@ -44,7 +38,7 @@
             </div>
 
             <form>
-              <div class="input-field" >
+              <div class="input-field">
                 <select>
                   <option>Category</option>
                 </select>
@@ -52,16 +46,13 @@
               </div>
 
               <div class="input-field">
-                <input type="text" id="name">
+                <input type="text" id="name" />
                 <label for="name">Название</label>
                 <span class="helper-text invalid">TITLE</span>
               </div>
 
               <div class="input-field">
-                <input
-                    id="limit"
-                    type="number"
-                >
+                <input id="limit" type="number" />
                 <label for="limit">Лимит</label>
                 <span class="helper-text invalid">LIMIT</span>
               </div>
@@ -80,10 +71,8 @@
 
 <script>
 export default {
-name: "Categories"
-}
+  name: "Categories"
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

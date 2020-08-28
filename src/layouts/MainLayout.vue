@@ -4,17 +4,14 @@
 
     <Sidebar v-model="isOpen" />
 
-
-    <main class="app-content" :class="{full: !isOpen}">
+    <main class="app-content" :class="{ full: !isOpen }">
       <div class="app-page">
-        <router-view/>
-
-
+        <router-view />
       </div>
     </main>
 
     <div class="fixed-action-btn">
-      <router-link class="btn-floating btn-large blue" to="record">
+      <router-link class="btn-floating btn-large blue" to="/record">
         <i class="large material-icons">add</i>
       </router-link>
     </div>
@@ -26,16 +23,13 @@ import Navbar from "@/components/app/Navbar";
 import Sidebar from "@/components/app/Sidebar";
 
 export default {
-  name: "MainLayout",
-  data: () =>({
+  name: "main-layout",
+  data: () => ({
     isOpen: true
   }),
   components: {
-    Navbar, Sidebar
+    Navbar,
+    Sidebar
   }
-}
+};
 </script>
-
-<style scoped>
-
-</style>
