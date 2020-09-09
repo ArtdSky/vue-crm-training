@@ -1,9 +1,10 @@
 # This is a training project based on Vue.js
-*here i try to use the main features of Vue.*
+*Simple CRM based on Vue.js.*
 
-*additionaly i use here:*
+*additionaly used here:*
 * materialize
 * firebase
+* fixer.io
 
 *This course created by youtube-channel 'VladilenMinin'*
 
