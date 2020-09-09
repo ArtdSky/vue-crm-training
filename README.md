@@ -5,5 +5,5 @@
 * materialize
 * firebase
 
-*This course created by VladilenMinin*
+*This course created by youtube-channel 'VladilenMinin'*
 
